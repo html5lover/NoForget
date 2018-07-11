@@ -1,0 +1,7 @@
+QPushButton {
+  font-size: 30px;
+}
+
+QLabel.span {
+  font-size: 50px;
+}
