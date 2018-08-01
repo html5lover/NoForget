@@ -31,6 +31,8 @@ class Game(QDialog):
             self.QLResult = ''
         else:
             self.QLResult = '[Lose]'
+    def startUi(self):
+        self.show()
 
 class Root(QMainWindow):
     def __init__(self, QApp):
