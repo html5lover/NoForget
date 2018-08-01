@@ -2,6 +2,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
+import random
 
 class Game(QDialog):
     def __init__(self, QApp):
@@ -13,7 +14,20 @@ class Game(QDialog):
         file.close()
         del file
         self.setStyleSheet(self.PSQWRootStyle)
-        #TODO #1
+        self.QGLRoot = QGridLayout()
+        self.setLayout(self.QGLRoot)
+        self.QLResult = QLabel(self)
+        self.QPBOption0 = QLabel(self)
+        self.QPBOption1 = QLabel(self)
+        self.QPBOption2 = QLabel(self)
+    def updateUi(self):
+        x = randint(1,3)
+        if x == 1:
+            self.QLResult = '[Win]'
+        elif x == 2:
+            self.QLResult = ''
+        else:
+            self.QLResult = '[Lose]'
 
 class Root(QMainWindow):
     def __init__(self, QApp):
