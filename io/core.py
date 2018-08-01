@@ -18,8 +18,11 @@ class Game(QDialog):
         self.setLayout(self.QGLRoot)
         self.QLResult = QLabel(self)
         self.QPBOption0 = QLabel(self)
+        self.QPBOption0.clicked.connect(self.updateUi)
         self.QPBOption1 = QLabel(self)
+        self.QPBOption1.clicked.connect(self.updateUi)
         self.QPBOption2 = QLabel(self)
+        self.QPBOption2.clicked.connect(self.updateUi)
     def updateUi(self):
         x = randint(1,3)
         if x == 1:
