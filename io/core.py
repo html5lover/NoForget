@@ -3,6 +3,18 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
+class Game(QDialog):
+    def __init__(self, QApp):
+        super().__init__()
+        self.QApp = QApp
+    def setupUi(self):
+        file = open('root.qss', 'r')
+        self.PSQWRootStyle = file.read()
+        file.close()
+        del file
+        self.setStyleSheet(self.PSQWRootStyle)
+        #TODO #1
+
 class Root(QMainWindow):
     def __init__(self, QApp):
         super().__init__()
@@ -13,7 +25,7 @@ class Root(QMainWindow):
         file.close()
         del file
         self.setStyleSheet(self.PSQWRootStyle)
-        self.PLQuestions = [['<b>1/6</b><hr><h1>連絡帳</h1>','ある','いらない'],
+        self.PLQuestions = [['<b>2/6</b><hr><h1>連絡帳</h1>','ある','いらない'],
                             ['<b>2/6</b><hr><h1>国語の教科書・ノート</h1>','ある','いらない'],
                             ['<b>2/6</b><hr><h1>国語ドリル</h1>','ある','いらない'],
                             ['<b>2/6</b><hr><h1>漢字ドリル</h1>','ある','いらない'],
@@ -56,6 +68,10 @@ class Root(QMainWindow):
         self.QLBTool.setText(self.PLQuestions[self.PLQuestionCounter][0])
         self.QPB0.setText(self.PLQuestions[self.PLQuestionCounter][1])
         self.QPB1.setText(self.PLQuestions[self.PLQuestionCounter][2])
+        if self.PLQuestionCounter == len(self.PLQuestions):
+            x = Game(self.QApp)
+            x.setupUi()
+            x.startUi()
     def updateUiQPB0(self):
         if self.PLQuestionCounter != len(self.PLQuestions) - 1:
             self.PLQuestionCounter += 1
